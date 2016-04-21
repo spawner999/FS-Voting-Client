@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8a7c35213c66fbed10b3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b1e05f3a34c1a7c09910"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8117,13 +8117,17 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _Vote = __webpack_require__(251);
+
+	var _Vote2 = _interopRequireDefault(_Vote);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var pair = ['Trainspotting', '28 Days Later'];
 
-	_reactDom2.default.render(_react2.default.createElement(Voting, { pair: pair }), document.getElementByID('app'));
+	_reactDom2.default.render(_react2.default.createElement(_Vote2.default, { pair: pair, winner: 'Trainspotting' }), document.getElementById('app'));
 
-	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(251); if (makeExportsHot(module, __webpack_require__(146))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(252); if (makeExportsHot(module, __webpack_require__(146))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
@@ -28402,10 +28406,74 @@
 /* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(146); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(146);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+	  displayName: "Vote",
+
+	  getPair: function getPair() {
+	    return this.props.pair || [];
+	  },
+	  isDisabled: function isDisabled() {
+	    return !!this.props.hasVoted;
+	  },
+	  hasVotedFor: function hasVotedFor(entry) {
+	    return this.props.hasVoted === entry;
+	  },
+	  render: function render() {
+	    var _this = this;
+
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "voting" },
+	      this.getPair().map(function (entry) {
+	        return _react2.default.createElement(
+	          "button",
+	          {
+	            key: entry,
+	            disabled: _this.isDisabled(),
+	            onClick: function onClick() {
+	              return _this.props.vote(entry);
+	            } },
+	          _react2.default.createElement(
+	            "h1",
+	            null,
+	            entry
+	          ),
+	          _this.hasVotedFor(entry) ? _react2.default.createElement(
+	            "div",
+	            { className: "label" },
+	            "Voted"
+	          ) : null
+	        );
+	      })
+	    );
+	  }
+	});
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(252); if (makeExportsHot(module, __webpack_require__(146))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Vote.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 252 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var isReactClassish = __webpack_require__(252),
-	    isReactElementish = __webpack_require__(253);
+	var isReactClassish = __webpack_require__(253),
+	    isReactElementish = __webpack_require__(254);
 
 	function makeExportsHot(m, React) {
 	  if (isReactElementish(m.exports, React)) {
@@ -28459,7 +28527,7 @@
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports) {
 
 	function hasRender(Class) {
@@ -28509,10 +28577,10 @@
 	module.exports = isReactClassish;
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isReactClassish = __webpack_require__(252);
+	var isReactClassish = __webpack_require__(253);
 
 	function isReactElementish(obj, React) {
 	  if (!obj) {
