@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import Winner from './Winner';
+import Winner from './Winner.jsx';
 
 export default React.createClass({
   mixins: [PureRenderMixin],

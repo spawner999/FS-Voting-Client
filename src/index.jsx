@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory} from 'react-router';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import reducer from 'reducer';
+import reducer from './reducer';
 import App from './components/App.jsx';
 import Voting from '../src/components/Voting.jsx';
 import Results from './components/Results.jsx'
