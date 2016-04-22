@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   renderIntoDocument,
-  scryRenderedDOMComponentsWithTag,
+  scryRenderedDOMComponentsWithClass,
   Simulate
 } from 'react-addons-test-utils';
 import {List, Map} from 'immutable';
@@ -17,7 +17,7 @@ describe('Results', () => {
     const component = renderIntoDocument(
       <Results pair={pair} tally={tally} />
     );
-    const entries = scryRenderedDOMComponentsWithTag(component, 'entry');
+    const entries = scryRenderedDOMComponentsWithClass(component, 'entry');
     const [train, days] = entries.map(e => e.textContent);
 
     expect(entries.length).to.equal(2);
@@ -25,5 +25,16 @@ describe('Results', () => {
     expect(train).to.contain('5');
     expect(days).to.contain('28 Days Later');
     expect(days).to.contain('0');
+  });
+
+  it('renders the winner when there is one', () => {
+    const component = renderIntoDocument(
+      <Results winner="Trainspotting"
+        pair={["Trainspotting", "28 Days Later"]}
+        tally={Map()} />
+    );
+    const winner = ReactDOM.findDOMNode(component.refs.winner);
+    expect(winner).to.be.ok;
+    expect(winner.textContent).to.contain('Trainspotting');
   });
 })
