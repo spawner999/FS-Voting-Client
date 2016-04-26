@@ -9,20 +9,15 @@ import App from './components/App.jsx';
 import Voting from '../src/components/Voting.jsx';
 import {VotingContainer} from './components/Voting.jsx';
 import Results from './components/Results.jsx';
-import {ResultsContainer} from './components/results.jsx';
+import {ResultsContainer} from './components/Results.jsx';
 
 const store = createStore(reducer);
-store.dispatch({
-  type: 'SET_STATE',
-  state: {
-    vote: {
-      pair: ['Sunshine', '28 Days Later'],
-      tally: {Sunshine: 2}
-    }
-  }
-});
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
+socket.on('state', state =>
+  store.dispatch({type: 'SET_STATE', state})
+);
+
 
 const routes = <Route component={App}>
   <Route path="/results" component={ResultsContainer} />
